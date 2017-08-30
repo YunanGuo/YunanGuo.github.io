@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
+  
+  
+  
+  
+  <title>breeze</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="breeze">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="breeze">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="breeze">
+  
+    <link rel="alternative" href="/atom.xml" title="breeze" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+    
+    
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: true,
+          isPost: false,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <script src="/js/jquery.require.js"></script>
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.png" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">晚风</a></h1>
+        </hgroup>
+        
+        <p class="header-subtitle">像风走了八千里 不问归期</p>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder=" Search...">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="/archives/">所有文章</a></li>
+                        
+                            <li><a  href="/categories/工作总结/">工作总结</a></li>
+                        
+                            <li><a  href="/categories/开发相关/">开发相关</a></li>
+                        
+                            <li><a  href="/categories/接口文档/">接口文档</a></li>
+                        
+                            <li><a  href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github"  target="_blank" href="https://github.com/YunanGuo" title="github">github</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
+                            
+                                <a class="fl rss"  target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/PHP-交互-转码/" style="font-size: 10px;">PHP 交互 转码</a> <a href="/tags/交互-时间戳/" style="font-size: 10px;">交互 时间戳</a> <a href="/tags/提测/" style="font-size: 10px;">提测</a> <a href="/tags/文本框/" style="font-size: 10px;">文本框</a> <a href="/tags/滚动条/" style="font-size: 10px;">滚动条</a>
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://blog.csdn.net/baidu_21483933">csdn</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://segmentfault.com/blog/maocg_web">segmentfault</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.jianshu.com/users/eb37ef89c746/latest_articles">简书</a>
+                    
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">爱旅行,爱游戏,爱编程,爱音乐,爱电影,爱的太多了!</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">晚风</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">晚风</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">像风走了八千里 不问归期</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/categories/工作总结/">工作总结</a></li>
+                
+                    <li><a href="/categories/开发相关/">开发相关</a></li>
+                
+                    <li><a href="/categories/接口文档/">接口文档</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/YunanGuo" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap">
+  
+    <article id="post-主流浏览器提供的滚动条样式修改方法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2017/08/30/主流浏览器提供的滚动条样式修改方法/" class="article-date">
+      <time datetime="2017-08-30T09:02:44.000Z" itemprop="datePublished">2017-08-30</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2017/08/30/主流浏览器提供的滚动条样式修改方法/">主流浏览器提供的滚动条样式修改方法</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="WebKit浏览器CSS设置滚动条"><a href="#WebKit浏览器CSS设置滚动条" class="headerlink" title="WebKit浏览器CSS设置滚动条"></a>WebKit浏览器CSS设置滚动条</h3><ol>
+<li>::-webkit-scrollbar 滚动条整体部分，可以设置宽度啥的</li>
+<li>::-webkit-scrollbar-button 滚动条两端的按钮</li>
+<li>::-webkit-scrollbar-track 外层轨道</li>
+<li>::-webkit-scrollbar-track-piece 内层轨道，滚动条中间部分（除去）</li>
+<li>::-webkit-scrollbar-thumb 拖动条，滑块</li>
+<li>::-webkit-scrollbar-corner 边角</li>
+<li>::-webkit-resizer 定义右下角拖动块的样式</li>
+</ol>
+<h3 id="CSS属性伪类"><a href="#CSS属性伪类" class="headerlink" title="CSS属性伪类"></a>CSS属性伪类</h3><ul>
+<li>:horizontal 水平方向的滚动条</li>
+<li>:vertical 垂直方向的滚动条</li>
+<li>:decrement 应用于按钮和内层轨道(track piece)。它用来指示按钮或者内层轨道是否会减小视窗的位置(比如，垂直滚动条的上面，水平滚动条的左边)</li>
+<li>:increment 和decrement类似，用来指示按钮或内层轨道是否会增大视窗的位置(比如，垂直滚动条的下面和水平滚动条的右边)</li>
+<li>:start 也应用于按钮和滑块。它用来定义对象是否放到滑块的前面。</li>
+<li>:end 类似于start伪类，标识对象是否放到滑块的后面。</li>
+<li>:double-button 该伪类以用于按钮和内层轨道。用于判断一个按钮是不是放在滚动条同一端的一对按钮中的一个。对于内层轨道来说，它表示内层轨道是否紧靠一对按钮。</li>
+<li>:single-button 类似于double-button伪类。对按钮来说，它用于判断一个按钮是否自己独立的在滚动条的一段。对内层轨道来说，它表示内层轨道是否紧靠一个single-button。</li>
+<li>:no-button 用于内层轨道，表示内层轨道是否要滚动到滚动条的终端，比如，滚动条两端没有按钮的时候。</li>
+<li>:corner-present 用于所有滚动条轨道，指示滚动条圆角是否显示。</li>
+<li>:window-inactive 用于所有的滚动条轨道，指示应用滚动条的某个页面容器(元素)是否当前被激活。(在webkit最近的版本中，该伪类也可以用于::selection伪元素。webkit团队有计划扩展它并推动成为一个标准的伪类)</li>
+</ul>
+<h3 id="demo-WebKit内核查看"><a href="#demo-WebKit内核查看" class="headerlink" title="demo(WebKit内核查看)"></a>demo(WebKit内核查看)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">/* 设置滚动条的样式 */</div><div class="line">::-webkit-scrollbar &#123;</div><div class="line">    width: 12px;</div><div class="line">&#125;</div><div class="line">/* 滚动槽 */</div><div class="line">::-webkit-scrollbar-track &#123;</div><div class="line">    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);</div><div class="line">    border-radius: 10px;</div><div class="line">&#125;</div><div class="line">/* 滚动条滑块 */</div><div class="line">::-webkit-scrollbar-thumb &#123;</div><div class="line">    border-radius: 10px;</div><div class="line">    background: rgba(0,0,0,0.1);</div><div class="line">    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);</div><div class="line">&#125;</div><div class="line">::-webkit-scrollbar-thumb:window-inactive &#123;</div><div class="line">    background: rgba(255,0,0,0.4);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="IE下面CSS设置滚动条"><a href="#IE下面CSS设置滚动条" class="headerlink" title="IE下面CSS设置滚动条"></a>IE下面CSS设置滚动条</h3><ol>
+<li>scrollbar-arrow-color: color; /三角箭头的颜色/</li>
+<li>scrollbar-face-color: color; /立体滚动条的颜色（包括箭头部分的背景色）/</li>
+<li>scrollbar-3dlight-color: color; /立体滚动条亮边的颜色/</li>
+<li>scrollbar-highlight-color: color; /滚动条的高亮颜色（左阴影？）/</li>
+<li>scrollbar-shadow-color: color; /立体滚动条阴影的颜色/</li>
+<li>scrollbar-darkshadow-color: color; /立体滚动条外阴影的颜色/</li>
+<li>scrollbar-track-color: color; /立体滚动条背景颜色/</li>
+<li>scrollbar-base-color:color; /滚动条的基色/</li>
+</ol>
+<h3 id="Firefox浏览器滚动条样式需用插件"><a href="#Firefox浏览器滚动条样式需用插件" class="headerlink" title="Firefox浏览器滚动条样式需用插件"></a>Firefox浏览器滚动条样式需用插件</h3><p>火狐不支持滚动条样式调整，火狐浏览器未开放针对滚动条样式的设定。且也不支持css代码关于这些浏览器属性的控制。如果非要样式效果，只能滚动效果用JS来做。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/工作总结/">工作总结</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/滚动条/">滚动条</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-移动端文本框适配" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2017/08/08/移动端文本框适配/" class="article-date">
+      <time datetime="2017-08-08T10:47:19.000Z" itemprop="datePublished">2017-08-08</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2017/08/08/移动端文本框适配/">移动端文本框适配</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;textarea&quot;&gt;</div><div class="line">    &lt;div class=&quot;textarea-box&quot;&gt;</div><div class="line">        &lt;div class=&quot;textarea-content&quot; contenteditable=&quot;true&quot;&gt;&lt;/div&gt;</div><div class="line">        &lt;span class=&quot;textarea-placeholder&quot;&gt;详细描述被举报人的恶意行为&lt;/span&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div counts-box&gt;</div><div class="line">        &lt;span class=&quot;input-counts&quot;&gt;&lt;/span&gt;&lt;span&gt;/&lt;/span&gt;&lt;span class=&quot;textarea-counts&quot;&gt;1000&lt;/span&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>iPhone（华为手机测试输入内容过多出现滚动条的时候光标上浮）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">.textarea-box&#123;</div><div class="line">    height: 200px;</div><div class="line">    overflow: hidden;</div><div class="line">&#125;</div><div class="line">.textarea-content&#123;</div><div class="line">    height: 200px;</div><div class="line">    overflow-x: hidden;</div><div class="line">    overflow-y: auto;</div><div class="line">    // contenteditable存在兼容问题，有的浏览器无法被选中</div><div class="line">    -webkit-user-select: text;</div><div class="line">    -moz-user-select: text;</div><div class="line">    -ms-user-select: text;</div><div class="line">    -o-user-select: text;</div><div class="line">    user-select: text;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Android（iPhone手机测试输入内容过多出现滚动条，内容被隐藏的部分光标却浮在最外层，粘贴内容过多时无法自动滚动到光标位子）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">.textarea-box&#123;</div><div class="line">    height: 200px;</div><div class="line">    overflow-x: hidden;</div><div class="line">    overflow-y: auto;</div><div class="line">&#125;</div><div class="line">.textarea-content&#123;</div><div class="line">    min-height: 200px;</div><div class="line">    overflow: hidden;</div><div class="line">    // contenteditable存在兼容问题，有的浏览器无法被选中</div><div class="line">    -webkit-user-select: text;</div><div class="line">    -moz-user-select: text;</div><div class="line">    -ms-user-select: text;</div><div class="line">    -o-user-select: text;</div><div class="line">    user-select: text;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="解析："><a href="#解析：" class="headerlink" title="解析："></a>解析：</h3><p>出现上面兼容的原因在于iPhone手机文本框内输入的内容会被包在<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;font&gt;&lt;span&gt;内容&lt;/span&gt;&lt;/font&gt;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/工作总结/">工作总结</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文本框/">文本框</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-提测" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2017/07/25/提测/" class="article-date">
+      <time datetime="2017-07-25T12:22:58.000Z" itemprop="datePublished">2017-07-25</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2017/07/25/提测/">提测</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/开发相关/">开发相关</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/提测/">提测</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-晚风test2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2017/07/24/晚风test2/" class="article-date">
+      <time datetime="2017-07-24T08:00:00.000Z" itemprop="datePublished">2017-07-24</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2017/07/24/晚风test2/">晚风test2</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/接口文档/">接口文档</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-数据交互时间戳问题" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2017/07/24/数据交互时间戳问题/" class="article-date">
+      <time datetime="2017-07-24T07:51:45.000Z" itemprop="datePublished">2017-07-24</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2017/07/24/数据交互时间戳问题/">数据交互时间戳问题</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="PHP与java时间戳的区别："><a href="#PHP与java时间戳的区别：" class="headerlink" title="PHP与java时间戳的区别："></a>PHP与java时间戳的区别：</h3><ul>
+<li>PHP的time()函数返回的结果是Unix时间戳，值的单位是秒 如：1463564861</li>
+<li>Java中System.currentTimeMillis()返回结果值的单位是毫秒 如：1463579759591</li>
+<li>java中拿到服务端php返回的时间戳得乘以1000</li>
+<li>PHP中拿到java的时间戳需要除以1000然后向下取整</li>
+</ul>
+<h3 id="JavaScript获取当前时间戳："><a href="#JavaScript获取当前时间戳：" class="headerlink" title="JavaScript获取当前时间戳："></a>JavaScript获取当前时间戳：</h3><p>第一种：获取的时间戳是把毫秒改成000显示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var timestamp = Date.parse(new Date());</div></pre></td></tr></table></figure></p>
+<p>第二种：获取了当前毫秒的时间戳<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var timestamp = (new Date()).valueOf();</div></pre></td></tr></table></figure></p>
+<p>第三种：获取了当前毫秒的时间戳(和第二种方法一样)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var timestamp = (new Date()).getTime();</div></pre></td></tr></table></figure></p>
+<p>补充：</p>
+<ol>
+<li><p>获取了当前毫秒的时间戳(ie8以上支持)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var timestamp = Date.now();</div></pre></td></tr></table></figure>
+</li>
+<li><p>获取了当前毫秒的时间戳(jquery方法)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var timestamp = $.now();</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="毫秒时间戳转成秒时间戳："><a href="#毫秒时间戳转成秒时间戳：" class="headerlink" title="毫秒时间戳转成秒时间戳："></a>毫秒时间戳转成秒时间戳：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var timestamp = (new Date()).getTime();</div><div class="line">console.log(parseInt(timestamp／1000));</div></pre></td></tr></table></figure>
+<h3 id="JavaScript进制转换-2进制、8进制、10进制、16进制之间的转换-："><a href="#JavaScript进制转换-2进制、8进制、10进制、16进制之间的转换-：" class="headerlink" title="JavaScript进制转换(2进制、8进制、10进制、16进制之间的转换)："></a>JavaScript进制转换(2进制、8进制、10进制、16进制之间的转换)：</h3><p>十进制转其他：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var x=110;  </div><div class="line">console.log(x.toString(2));  //10进制转2进制</div><div class="line">console.log(x.toString(8));  //10进制转8进制</div><div class="line">console.log(x.toString(16));  //10进制转16进制</div></pre></td></tr></table></figure></p>
+<p>其他转十进制：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var x=&apos;110&apos;;  </div><div class="line">console.log(parseInt(x,2));  //2进制转10进制</div><div class="line">console.log(parseInt(x,8));  //8进制转10进制</div><div class="line">console.log(parseInt(x,16));  //16进制转10进制</div></pre></td></tr></table></figure></p>
+<p>其他转其他：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//先用parseInt转成十进制再用toString转到目标进制  </div><div class="line">console.log(String.fromCharCode(parseInt(141,8)));  </div><div class="line">console.log(parseInt(&apos;ff&apos;,16).toString(2));</div></pre></td></tr></table></figure></p>
+<h3 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h3><p>聊天工具每秒甚至每毫秒都有可能有很多人同时发消息，如果只是用单纯的精确到秒，精确到毫秒的时间戳很难去分离独立每条信息的唯一性，所以开发中经常会将时间戳10进制转2进制在后面加东西再转10进制生成一个较长的经处理时间戳来区分消息的唯一性，这样前端在处理这个不是13位也不是10位的时间戳的时候就涉及到10进制转2进制截取的问题。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/工作总结/">工作总结</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/交互-时间戳/">交互 时间戳</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-js与PHP数据交互转码问题" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2017/07/24/js与PHP数据交互转码问题/" class="article-date">
+      <time datetime="2017-07-24T07:50:57.000Z" itemprop="datePublished">2017-07-24</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2017/07/24/js与PHP数据交互转码问题/">js与PHP数据交互转码问题</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h3><ol>
+<li>ajax向PHP传递XML格式数据中文乱码</li>
+<li>XML标签内容为html格式等带特殊符号的复杂内容影响后台PHP校验获取数据</li>
+<li>PHP收集XML标签里面内容并在头部和尾部加入预先协定中文生成的md5校验码与前端生成的md5无法确保相同</li>
+</ol>
+<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><ol>
+<li>前端对XML标签里面的内容进行编码,后台PHP解析XML对应标签内容进行解码存入数据库</li>
+<li>由于XML标签里面的内容已经是经过一次编码，前端获取到编码的内容在头尾加入协定中文生成md5时又涉及到中文乱码，所以进行二次编码</li>
+<li>后台PHP解析XML对应标签内容在头尾加入协定中文同样先进行二次编码再生成md5与前端的进行校验对比</li>
+</ol>
+<h3 id="相关："><a href="#相关：" class="headerlink" title="相关："></a>相关：</h3><ol>
+<li>escape不编码字符有69个：*，+，-，.，/，@，_，0-9，a-z，A-Z  （ECMAScript v3 反对使用该方法）</li>
+<li>encodeURIComponent不编码字符有71个：!， ‘，(，)，*，-，.，_，~，0-9，a-z，A-Z</li>
+<li>encodeURI不编码字符有82个：!，#，$，&amp;，’，(，)，*，+，,，-，.，/，:，;，=，?，@，_，~，0-9，a-z，A-Z</li>
+<li>PHP的urlencode和rawurlencode编码规则：除了“-_.”之外的所有非字母数字字符都将被替换成百分号“%”后跟两位十六进制数</li>
+<li>PHP的urlencode和rawurlencode编码区别：urlencode将空格编码为加号“+”，rawurlencode将空格编码为加号“%20”</li>
+</ol>
+<h3 id="实际操作："><a href="#实际操作：" class="headerlink" title="实际操作："></a>实际操作：</h3><ol>
+<li>前端先用encodeURI对XML标签里面的内容进行第一次编码，头尾加入前后端协定的中文再使用encodeURI进行二次编码，两次编码对一些特殊字符并未编码，虽然PHP的urldecode和rawurldecode方法在解码入库时没有问题，但在编码生成md5却会出现问题。原因是PHP的urlencode和rawurlencode都会对特殊字符进行编码所致</li>
+<li>前端先用encodeURI对XML标签里面的内容进行第一次编码，二次编码时使用encodeURIComponent进行编码再生成md5，第二次编码对一些特殊字符进行了编码，也包括第一次转码后的’%’编码成了’20%’，PHP的urldecode和rawurldecode方法在解码入库时没有问题，在对前端encodeURI方法第一次编码的内容使用urlencode进行再编码时将’%’编码成了’+’导致生成的md5不一样</li>
+<li>基于2，PHP对前端encodeURI方法第一次编码的内容使用rawurlencode进行再编码时生成的md5就一样，原因是rawurlencode方法和js的encodeURIComponent方法一样把’%’编码成了’20%’</li>
+<li>前端两次编码都使用encodeURIComponent编码，PHP解码使用两种解码都行，编码时使用rawurlencode.</li>
+</ol>
+<h3 id="依旧bug："><a href="#依旧bug：" class="headerlink" title="依旧bug："></a>依旧bug：</h3><p>虽然上面的方法转码了大部分特殊符号，但是无论测试还是上线之后都难免出现特殊符号导致各种问题，随着问题的出现最终还是换了另一种方法base64转码。</p>
+<h3 id="base64转码"><a href="#base64转码" class="headerlink" title="base64转码"></a>base64转码</h3><ul>
+<li>优点 <ol>
+<li>可以对所有特殊字符进行转码解决了特殊符号带来的困恼</li>
+<li>同时也解决了中文乱码的问题</li>
+</ol>
+</li>
+<li>缺点<ol>
+<li>js没有现成的方法，不过可以在网上找</li>
+</ol>
+</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>如果涉及到文本框输入等复杂的内容数据传递为了避免中文乱码以及各种特殊符号带来的困扰就使用base64转码或者Unicode转码传递。<br>如果只是URL里面的传递简单的参数可以使用encodeURI和encodeURIComponent等转码。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/工作总结/">工作总结</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP-交互-转码/">PHP 交互 转码</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2017 晚风
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a><a href="https://github.com/YunanGuo" target="_blank">Blog</a> by breeze
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >极客到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="/js/jquery.require.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 4;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'xxxxx', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
